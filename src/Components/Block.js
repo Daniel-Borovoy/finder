@@ -7,14 +7,16 @@ const css = {
 }
 
 function click(){
-    let a = window.open('https://oauth.vk.com/authorize?client_id=7905028&display=page&redirect_uri=localhost:80&scope=groups&response_type=token&v=5.52', 'caption', 'resizable=1,width=600,height=600', true);
-    let url = a.opener.location.href;
-    const params = new URLSearchParams(url);
-
-    let token = params.get("access_token"),
-        id = params.get("user_id");
-
-    console.log("access token=" + token + "id=" + id);
+    let paramsString = document.location.href,
+        searchParams = new URLSearchParams(paramsString);
+    console.log(searchParams.get("http://localhost/#access_token"));
+    let token = searchParams.get("http://localhost/#access_token");
+    
+    if (token === null){
+        alert("Вы не авторизованы");
+    }else{
+        alert("Вы авторизованы");
+    }
 }
 
 function Block() {
@@ -22,7 +24,7 @@ function Block() {
     <div className='test'>
      <h1>Test</h1>
         <form action=''>
-            <input type='button' onClick={click} value='Тык'></input>
+            <input type='button' onClick={click}  value='Тык'></input>
             {/* <a href='https://oauth.vk.com/authorize?client_id=7905028&display=page&redirect_uri=localhost:80&scope=groups&response_type=token&v=5.52'>123</a> */}
         </form>
     </div>
