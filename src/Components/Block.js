@@ -6,33 +6,51 @@ const css = {
     }
 }
 
-var a;
-var b = false;
+let a;
+let b = false;
 
 
 
 
 // function ass(){
 //     console.log('jepa');
-    
-// }
 
-function hashHandler(){
-    var oldHash = a.location.hash;
-    // var url = (a.location != a.parent.location)
-    //         ? document.referrer
-    //         : document.location.href;
-    var detect = () => {
-        if(oldHash!=a.location.hash){
-            console.log(a.location.hash);
-            oldHash = a.location.hash;
+// }
+let userHash;
+let token;
+let userId;
+const hashHandler = () => {
+    let oldHash = a.location.hash;
+    const detect = () => {
+        if (oldHash !== a.location.hash){
+            if (a.location.hash.startsWith("#access_token")){
+                userHash = a.location.hash;
+                a.close()
+                clearInterval(interval);
+                return;   
+            }
+            return;
         }
-        // a.onhashchange = function() { 
-        //         console.log("piska")
-        //     }
-    };
-    setInterval(function(){ detect() }, 100);
+        return;
+    }
+    let interval = setInterval(() => {
+        detect();
+    }, 100);
+    setTimeout(() => {
+        let searchParams = new URLSearchParams(userHash);
+        token = searchParams.get("#access_token");
+        userId = searchParams.get("user_id");
+        // console.log(userHash)
+        // let response = fetch(`https://api.vk.com/method/users.get?user_ids=${userId}&fields=bdate&access_token=${token}&v=5.131`, "no-cors");
+        // хз почему fetch не работает, почитай про Response() js и проблему с этой ошибкой в реакте
+    }, 3000);
+    
 }
+
+
+
+
+
 
 // var hashDetection = new hashHandler();
 
@@ -51,7 +69,7 @@ function click(){
     // }else{
     //     alert("Вы авторизованы");
     // }
-    a = window.open("https://oauth.vk.com/authorize?client_id=7905028&display=page&redirect_uri=localhost:80&scope=groups&response_type=token&v=5.52","","height=300,width=400");
+    a = window.open("https://oauth.vk.com/authorize?client_id=7905028&display=page&redirect_uri=localhost:80&scope=groups&response_type=token&v=5.52","","height=300,width=400", "");
 
     // console.log(a.location.href);
     // a.onhashchange = function() { 
@@ -59,6 +77,7 @@ function click(){
     //     console.log('a');
     // }
     hashHandler();
+    
 }
 
 function tested(){
