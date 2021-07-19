@@ -1,10 +1,16 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Block from './Components/Block';
-import VK, { Auth } from 'react-vk'
+import VK_login from './Actions/VK_login';
+
 
 const App = () => {
-  return (<div><Block/></div>);
+  return (
+    <div>
+      <Block/>
+      <VK_login/>
+    </div>
+  );
 };
 
 
