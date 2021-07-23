@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 .header{
-    background-color: #1d1d1d;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f6f6f6;
     padding: 15px 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 main{
     margin: 0 auto;
@@ -18,10 +24,16 @@ nav{
 }
 .text{
     margin: 0;
-    color: #fff;
+    color: #000;
+    user-select: none;
+}
+button, form input[type="button"] {
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    user-select: none;
 }
 .links{
-    color: #fff;
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -31,19 +43,39 @@ nav{
 .links li{
     padding: 0 15px 0 0;
 }
-button{
+.links button{
+    color: rgba(0,0,0,0.6);
     background-color: #fff;
-    border-radius: 5px;
-    padding: 5px 15px;
-    border: 3px solid #f6f6f6;
+    border-radius: 24px;
+    padding: 10px 15px;
     transition: .4s ease 0s;
-    
 }
-button:hover{
-    color: #fff;
-    background-color: #000;
-    border: 3px solid #333333;
-    border-style: solid none solid none;
-    cursor: pointer;
-    padding: 5px 30px;
+.links button:hover{
+    background-color: #fff;
+    color: #000;
+}
+form input[type="button"]:hover{
+    background-color: #fff;
+
+}
+
+
+form input[type="button"]:active{
+    opacity: .4;
+}
+input[type="button"]{
+    background-color: blue;
+    color: rgba(255,255,255,0.9);
+    border-radius: 24px;
+    padding: 10px 40px;
+    transition: .4s ease 0s;
+}
+.login form input[type="button"] {
+    background-color: blue;
+}
+.login form input[type="button"]:hover {
+    color:#fff;
+}
+.out form input[type="button"] {
+    background-color: red;
 }

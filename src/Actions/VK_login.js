@@ -5,20 +5,25 @@ import ReactDOM from "react-dom"
 import App from "../App"
 
 //сессия юзера
-let session = false
+export let session = false
 //текст кнопки авторизации
 let login_button = 'Войти'
 //ссылка на аватар юзера
 let profile_src
 //стиль для формы
 const form_style = {
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
 }
 //стиль для аватара юзера
 const profile_img_style = {
-    marginRight: '10px'
+    marginLeft: '15px',
+    width: '35px',
+    borderRadius: '50%',
+    position: 'absolute',
+    left: '100%'
 }
 
 class VK_login extends React.Component{
@@ -56,8 +61,8 @@ class VK_login extends React.Component{
     render(){
         return (
             <form action='' style={form_style}>
-                {/* <img src={profile_src} style={profile_img_style} alt=""></img> */}
                 <input type='button' onClick={this.click}  value={login_button}></input>
+                <img src={profile_src} style={profile_img_style} alt=""></img>
             </form>
           );
     }
