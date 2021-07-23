@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+.navbar{
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    left: 0;
+}
 .header{
     font-family: 'Montserrat', sans-serif;
     background-color: #f6f6f6;
     padding: 15px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
 }
 main{
     margin: 0 auto;
