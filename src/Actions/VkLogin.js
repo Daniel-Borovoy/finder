@@ -5,7 +5,7 @@ import ReactDOM from "react-dom"
 import App from "../App"
 
 //сессия юзера
-export let session = false
+let session = false
 //текст кнопки авторизации
 let login_button = 'Войти'
 //ссылка на аватар юзера
@@ -25,8 +25,10 @@ const profile_img_style = {
     position: 'absolute',
     left: '100%'
 }
-
-class VK_login extends React.Component{
+let btn_style = {
+    backgroundColor: 'blue'
+}
+class VkLogin extends React.Component{
 
     click(){
         //если пользователь авторизирован - выходим, не авторизирован - заходим
@@ -34,15 +36,21 @@ class VK_login extends React.Component{
             VK.Auth.logout(r => {
                 login_button = 'Войти'
                 profile_src = ''
-                ReactDOM.render(<App/>, document.getElementById('root'))
                 session = false
+                btn_style = {
+                    backgroundColor: 'red'
+                }
+                ReactDOM.render(<App/>, document.getElementById('root'))
             })
         } else {
             VK.Auth.login(r => {
                 if (r.session){
                     login_button = 'Выйти'
-                    ReactDOM.render(<App/>, document.getElementById('root'))
                     session = true
+                    btn_style = {
+                        backgroundColor: 'red'
+                    }
+                    ReactDOM.render(<App/>, document.getElementById('root'))
                     //запрос аватарки юзера
                     VK.Api.call('users.get', {user_ids: r.session.user.id, fields: 'photo_100', v:"5.73"}, function(r) {
                         if(r.response) {
@@ -60,12 +68,12 @@ class VK_login extends React.Component{
 
     render(){
         return (
-            <form action='' style={form_style}>
-                <input type='button' onClick={this.click}  value={login_button}></input>
+            <div style={form_style}>
+                <button type='button' style={btn_style} onClick={this.click}>{login_button}</button>
                 <img src={profile_src} style={profile_img_style} alt=""></img>
-            </form>
+            </div>
           );
     }
 }
 
-export default VK_login;
+export default VkLogin;

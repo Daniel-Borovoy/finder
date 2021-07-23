@@ -2,7 +2,7 @@
 .header{
     font-family: 'Montserrat', sans-serif;
     background-color: #f6f6f6;
-    padding: 15px 15px;
+    padding: 15px;
     position: fixed;
     width: 100%;
     top: 0;
@@ -54,28 +54,16 @@ button, form input[type="button"] {
     background-color: #fff;
     color: #000;
 }
-form input[type="button"]:hover{
-    background-color: #fff;
 
-}
-
-
-form input[type="button"]:active{
-    opacity: .4;
-}
-input[type="button"]{
-    background-color: blue;
-    color: rgba(255,255,255,0.9);
+button[type="button"]{
+    color: rgba(255,255,255,0.65);
     border-radius: 24px;
     padding: 10px 40px;
     transition: .4s ease 0s;
 }
-.login form input[type="button"] {
-    background-color: blue;
-}
-.login form input[type="button"]:hover {
+button[type="button"]:hover {
     color:#fff;
 }
-.out form input[type="button"] {
-    background-color: red;
+button[type="button"]:active{
+    opacity: .4;
 }

@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import Block from './Components/Block';
-import VkLogin from './Actions/VK_login';
+import VkLogin from './Actions/VkLogin';
 import Header from './Components/Header'
 
 const App = () => {
@@ -13,7 +13,5 @@ const App = () => {
     </div>
   );
 };
-
-
 
 export default App;
