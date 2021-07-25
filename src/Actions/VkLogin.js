@@ -38,7 +38,7 @@ class VkLogin extends React.Component{
                 profile_src = ''
                 session = false
                 btn_style = {
-                    backgroundColor: 'red'
+                    backgroundColor: 'blue'
                 }
                 ReactDOM.render(<App/>, document.getElementById('root'))
             })
@@ -63,6 +63,7 @@ class VkLogin extends React.Component{
                 }
             },2+4+8+16+262144)
             //числа выше - битовые маски прав доступа https://vk.com/dev/permissions
+
         }
     }
 
