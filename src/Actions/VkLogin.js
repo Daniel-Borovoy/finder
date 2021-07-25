@@ -28,7 +28,7 @@ const profile_img_style = {
 let btn_style = {
     backgroundColor: 'blue'
 }
-class VkLogin extends React.Component{
+class VKLogin extends React.Component{
 
     click(){
         //если пользователь авторизирован - выходим, не авторизирован - заходим
@@ -77,4 +77,4 @@ class VkLogin extends React.Component{
     }
 }
 
-export default VkLogin;
+export default VKLogin;
