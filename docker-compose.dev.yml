@@ -11,4 +11,4 @@ services:
     ports:
       - 3000:3000
       - 9229:9229
-    command: ["yarn", "run", "dev"]
+    command: ["yarn", "run", "start:dev"]
