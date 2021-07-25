@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  backend:
+    image: finder-backend
+    build:
+      context: backend
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+      - 9229:9229
+    command: ["yarn", "run", "dev"]
