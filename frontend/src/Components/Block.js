@@ -1,11 +1,13 @@
 import "../Styles/Block.css"
 
+
 function Block() {
   return (
-    <div className='test'>  
-        <h1>VK API</h1>
-    </div>
+    <section className="section1">
+        <div className="section__body">
+            <div className="title section1__title">Welcome to Finder</div>
+        </div>
+    </section>
   );
 }
-
 export default Block;
