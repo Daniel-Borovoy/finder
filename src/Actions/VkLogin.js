@@ -12,16 +12,23 @@ let login_button = 'Войти'
 let profile_src
 //стиль для формы
 const form_style = {
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
 }
 //стиль для аватара юзера
 const profile_img_style = {
-    marginRight: '10px'
+    marginLeft: '15px',
+    width: '35px',
+    borderRadius: '50%',
+    position: 'absolute',
+    left: '100%'
 }
-
-class VK_login extends React.Component{
+let btn_style = {
+    backgroundColor: 'blue'
+}
+class VkLogin extends React.Component{
 
     click(){
         //если пользователь авторизирован - выходим, не авторизирован - заходим
@@ -29,15 +36,21 @@ class VK_login extends React.Component{
             VK.Auth.logout(r => {
                 login_button = 'Войти'
                 profile_src = ''
-                ReactDOM.render(<App/>, document.getElementById('root'))
                 session = false
+                btn_style = {
+                    backgroundColor: 'blue'
+                }
+                ReactDOM.render(<App/>, document.getElementById('root'))
             })
         } else {
             VK.Auth.login(r => {
                 if (r.session){
                     login_button = 'Выйти'
-                    ReactDOM.render(<App/>, document.getElementById('root'))
                     session = true
+                    btn_style = {
+                        backgroundColor: 'red'
+                    }
+                    ReactDOM.render(<App/>, document.getElementById('root'))
                     //запрос аватарки юзера
                     VK.Api.call('users.get', {user_ids: r.session.user.id, fields: 'photo_100', v:"5.73"}, function(r) {
                         if(r.response) {
@@ -50,17 +63,18 @@ class VK_login extends React.Component{
                 }
             },2+4+8+16+262144)
             //числа выше - битовые маски прав доступа https://vk.com/dev/permissions
+
         }
     }
 
     render(){
         return (
-            <form action='' style={form_style}>
-                {/* <img src={profile_src} style={profile_img_style} alt=""></img> */}
-                <input type='button' onClick={this.click}  value={login_button}></input>
-            </form>
+            <div style={form_style}>
+                <button type='button' style={btn_style} onClick={this.click}>{login_button}</button>
+                <img src={profile_src} style={profile_img_style} alt=""></img>
+            </div>
           );
     }
 }
 
-export default VK_login;
+export default VkLogin;
