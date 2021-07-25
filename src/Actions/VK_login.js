@@ -7,7 +7,7 @@ import App from "../App"
 //сессия юзера
 let session = false
 //текст кнопки авторизации
-let login_button = 'Login in'
+let login_button = 'Войти'
 //ссылка на аватар юзера
 let profile_src
 //стиль для формы
@@ -18,7 +18,6 @@ const form_style = {
 }
 //стиль для аватара юзера
 const profile_img_style = {
-    borderRadius: '50%',
     marginRight: '10px'
 }
 
@@ -28,7 +27,7 @@ class VK_login extends React.Component{
         //если пользователь авторизирован - выходим, не авторизирован - заходим
         if (session){
             VK.Auth.logout(r => {
-                login_button = 'Login in'
+                login_button = 'Войти'
                 profile_src = ''
                 ReactDOM.render(<App/>, document.getElementById('root'))
                 session = false
@@ -36,14 +35,14 @@ class VK_login extends React.Component{
         } else {
             VK.Auth.login(r => {
                 if (r.session){
-                    login_button = 'Login out'
+                    login_button = 'Выйти'
                     ReactDOM.render(<App/>, document.getElementById('root'))
                     session = true
                     //запрос аватарки юзера
-                    VK.Api.call('users.get', {user_ids: r.session.user.id, fields: 'photo_50', v:"5.73"}, function(r) {
+                    VK.Api.call('users.get', {user_ids: r.session.user.id, fields: 'photo_100', v:"5.73"}, function(r) {
                         if(r.response) {
                           console.log(r.response[0].id)
-                          profile_src = r.response[0].photo_50
+                          profile_src = r.response[0].photo_100
                           ReactDOM.render(<App/>, document.getElementById('root'))
                         }
                       });
@@ -57,7 +56,7 @@ class VK_login extends React.Component{
     render(){
         return (
             <form action='' style={form_style}>
-                <img src={profile_src} style={profile_img_style}></img>
+                {/* <img src={profile_src} style={profile_img_style} alt=""></img> */}
                 <input type='button' onClick={this.click}  value={login_button}></input>
             </form>
           );

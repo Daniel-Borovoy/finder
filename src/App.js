@@ -1,14 +1,15 @@
 // import logo from './logo.svg';
 import './App.css';
 import Block from './Components/Block';
-import VK_login from './Actions/VK_login';
-
+import VkLogin from './Actions/VK_login';
+import Header from './Components/Header'
 
 const App = () => {
   return (
     <div>
+      <Header/>
       <Block/>
-      <VK_login/>
+      <VkLogin/>
     </div>
   );
 };
