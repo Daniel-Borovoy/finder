@@ -1,5 +1,5 @@
 {
-  "name": "finder",
+  "name": "finder-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,11 +14,20 @@
     "styled-components": "^5.3.0",
     "web-vitals": "^1.0.1"
   },
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  },
   "scripts": {
     "start": "set PORT=80 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext .js,.jsx"
   },
   "eslintConfig": {
     "extends": [
