@@ -64,7 +64,7 @@ VK.Auth.getLoginStatus(r => {
 
 
 
-class VKLogin extends React.Component{
+class VkLogin extends React.Component{
 
     click(){
         //если пользователь авторизирован - выходим, не авторизирован - заходим
@@ -97,4 +97,4 @@ class VKLogin extends React.Component{
     }
 }
 
-export default VKLogin;
+export default VkLogin;

@@ -1,5 +1,5 @@
 import '../Styles/Header.css'
-import VKLogin from  '../Actions/VKLogin'
+import VkLogin from  '../Actions/VkLogin'
 
 
 function Header() {
@@ -15,7 +15,7 @@ function Header() {
                   <li><button>ссылка</button></li>
                   <li><button>ссылка</button></li>
               </ul>
-                <VKLogin/>
+                <VkLogin/>
             </nav>
           </main>
         </header>

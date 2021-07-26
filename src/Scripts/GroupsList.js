@@ -3,7 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import GroupСard from "../Actions/GroupCard";
-import {userId} from "../Actions/VKLogin";
+import {userId} from "../Actions/VkLogin";
 import App from "../App"
 
 let group_count = 200
