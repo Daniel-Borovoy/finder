@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 250px;
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    border-radius: 50px;
+    background-color: #f0f0f3;
+    
+    transition: 0.5s;
+    box-shadow: 4px 4px 15px #d3d3d6,
+                -4px -4px 15px #fff;
+    top: 5px;
+}
+
+.container:hover{
+    top: 0px;
+    box-shadow: 10px 10px 21px #d3d3d6,
+                -10px -10px 21px #fff;
+    transition: 0.5s;
+}
+
+.container:hover .avatar{
+    margin-bottom: 35px;
+    transition: 0.5s;
+}
+
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transition: 0.5s;
+}
