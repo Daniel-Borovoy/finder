@@ -81,6 +81,8 @@ button[type="button"]:active{
     padding: 0 10px;
     position: relative;
     transition: .2s ease 0s;
+
+    user-select: none;
 }
 .log:hover{
     background-color: #dedede;
@@ -90,6 +92,7 @@ button[type="button"]:active{
     opacity: 1;
 }
 .top_profile_menu{
+
     visibility: hidden;
     opacity: 0;
     transition: .2s ease 0s;
@@ -125,4 +128,9 @@ button[type="button"]:active{
 .top_profile_menu button:hover{
     /*text-decoration: underline;*/
     background-color: #d5d5d5;
+}
+.top_profile_sep{
+    width: 80%;
+    margin: 4px 13px;
+    border-top: 1px solid #929292;
 }
