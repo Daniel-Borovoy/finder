@@ -4,8 +4,8 @@ import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Block from './Components/Block';
 import Header from './Components/Header';
-import GroupsList from './Scripts/GroupsList';
-
+import GroupsList from './Components/GroupsList';
+import ScrollToTop from './Components/ScrollToTop'
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => (
   <BrowserRouter>
+  <ScrollToTop />
     <div>
       <Header />
       <GlobalStyle />

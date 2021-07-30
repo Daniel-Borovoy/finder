@@ -58,6 +58,7 @@ button, form input[type="button"] {
 }
 .links button:hover{
     background-color: #fff;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.2);
     color: #000;
 }
 
@@ -76,23 +77,31 @@ button[type="button"]:active{
     opacity: .4;
 }
 
-.log{
+.profile{
     height: 70px;
     padding: 0 10px;
     position: relative;
     transition: .2s ease 0s;
-
+    width: 150px;
     user-select: none;
 }
-.log:hover{
+.profile:hover{
     background-color: #dedede;
 }
-.log:hover .top_profile_menu{
+/* .log:hover .top_profile_menu{
     visibility: visible;
     opacity: 1;
+} */
+.profile.active{
+    background-color: #cfcece;
+}
+.arrow{
+   transition: .25s ease 0s; 
+}
+.arrow.rotate{
+    transform: rotate(0.5turn);
 }
 .top_profile_menu{
-
     visibility: hidden;
     opacity: 0;
     transition: .2s ease 0s;
@@ -107,30 +116,22 @@ button[type="button"]:active{
     align-items: center;
     background-color: #e7e7e7;
 }
-.top_profile_menu a{
-    text-align: center;
-    width: 151.17px;
-    padding: 10px;
-    font-size: 14px;
-}
-.top_profile_menu a:hover{
-    /*text-decoration: underline;*/
-    background-color: #d5d5d5;
-    cursor: pointer;
-}
 .top_profile_menu button{
     border: none;
-    width: 151.17px;
+    width: 150px;
     padding: 10px;
     background-color: #e7e7e7;
     font-size: 14px;
 }
 .top_profile_menu button:hover{
-    /*text-decoration: underline;*/
     background-color: #d5d5d5;
 }
 .top_profile_sep{
     width: 80%;
     margin: 4px 13px;
     border-top: 1px solid #929292;
+}
+.top_profile_menu.active{
+    visibility: visible;
+    opacity: 1;
 }
