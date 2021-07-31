@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+.navbar{
+    z-index: 100;
+    position: fixed;
+    width: 100vw;
+    height: 70px;
+    top: 0;
+    left: 0;
+    .header{
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f6f6f6;
+        padding: 0 15px;
+        height: 100%;
+        main{
+            height: 100%;
+            margin: 0 auto;
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            .text{
+                margin: 0;
+                color: #000;
+                user-select: none;
+            }
+            nav{
+                display: flex;
+                flex-direction: row;
+                ul{
+                    list-style: none;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        padding: 0 15px 0 0;
+                    }
+                    button{
+                        border: none;
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 700;
+                        cursor: pointer;
+                        user-select: none;
+                    }
+                    button{
+                        color: rgba(0,0,0,0.6);
+                        background-color: #fff;
+                        border-radius: 24px;
+                        padding: 10px 15px;
+                        transition: .4s ease 0s;
+                        &:hover{
+                            background-color: #fff;
+                            box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.2);
+                            color: #000;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* стили для топ логина (VK LOGIN) */
+button[type="button"]{
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    color: rgba(255,255,255,0.65);
+    border-radius: 24px;
+    padding: 10px 40px;
+    transition: .4s ease 0s;
+    &:hover{
+        color:#fff;
+    }
+    &:active{
+        opacity: .4;
+    }
+}
+
+.profile{
+    height: 70px;
+    padding: 0 10px;
+    position: relative;
+    cursor: pointer;
+    transition: .2s ease 0s;
+    width: 150px;
+    user-select: none;
+    &:hover{
+        background-color: #dedede;
+    }
+    .arrow{
+        transition: .25s ease 0s; 
+     }
+     .arrow.rotate{
+         transform: rotate(0.5turn);
+     }
+     .top_profile_menu{
+         cursor: default;
+         visibility: hidden;
+         opacity: 0;
+         transition: .2s ease 0s;
+         position: absolute;
+         padding: 30px 0;
+         top: 100%;
+         right: 0;
+         display: flex;
+         color: #000;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         background-color: #e7e7e7;
+         button{
+             cursor: pointer;
+             border: none;
+             width: 150px;
+             padding: 10px;
+             background-color: #e7e7e7;
+             font-size: 16px;
+             font-family: 'Montserrat', sans-serif;
+             font-weight: 500;
+             &:hover{
+                 background-color: #d5d5d5;
+             }
+         }
+         .top_profile_sep{
+             width: 80%;
+             margin: 4px 13px;
+             border-top: 1px solid #929292;
+         }
+     }
+     .top_profile_menu.active{
+         visibility: visible;
+         opacity: 1;
+     }
+}
+.profile.active{
+    background-color: #cfcece;
+}

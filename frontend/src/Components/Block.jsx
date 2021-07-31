@@ -1,4 +1,4 @@
-import '../Styles/Block.css';
+import '../Styles/Block.scss';
 
 function Block() {
   return (

@@ -1,4 +1,14 @@
-.body{
-    padding: 0 100px;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+#root{
+    display: flex;
+    justify-content: center;
     background-color: #f0f0f3;
+}
+.wrapper{
+    max-width: 1200px;
+    height: 100%;
 }

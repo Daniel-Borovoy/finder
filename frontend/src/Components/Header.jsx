@@ -1,8 +1,7 @@
-import '../Styles/Header.css';
+import '../Styles/Header.scss';
 import { NavLink } from 'react-router-dom';
 import VKLogin from './VKLogin';
 import React from 'react';
-import '../Styles/Example.scss';
 // window.onload = function () {
 //     let navbar = document.querySelector('.navbar');
 //     let body = document.getElementById('body');
@@ -12,8 +11,8 @@ import '../Styles/Example.scss';
 
 function Header() {
   return (
-    <div className="navbar" id="navbar">
-      <header className="header" id="header">
+    <div className="navbar" >
+      <header className="header">
         <main>
           <h1 className="text">RE-FINDER</h1>
           <nav>

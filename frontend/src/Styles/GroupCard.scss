@@ -1,0 +1,47 @@
+.container{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 250px;
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    border-radius: 50px;
+    background-color: #f0f0f3;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 4px 4px 15px #d3d3d6,
+                -4px -4px 15px #fff;
+    top: 5px;
+    &:hover{
+        top: 0px;
+        box-shadow: 10px 10px 21px #d3d3d6,
+                -10px -10px 21px #fff;
+        transition: 0.5s;
+    }
+    &:hover .name{
+        color: #000;
+    }
+    .avatar{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        transition: 0.5s;
+    }
+    &:hover .avatar{
+        margin-bottom: 35px;
+        transition: 0.5s;
+    }
+    .name{
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        color: #333;
+        transition: 1s ease 0s;
+        user-select: none;
+    }
+}
+

@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import GroupСard from '../Actions/GroupCard';
 import { userId } from './VKLogin';
-import "../Styles/GroupCard.css";
+import "../Styles/GroupCard.scss";
 
 let groupCount = "200";
 let groupArray = [];
