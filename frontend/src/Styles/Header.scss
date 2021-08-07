@@ -133,11 +133,11 @@ button[type="button"]{
              border-top: 1px solid #929292;
          }
      }
-     .top_profile_menu.active{
+     .top_profile_menu.open{
          visibility: visible;
          opacity: 1;
      }
 }
-.profile.active{
+.profile.open{
     background-color: #cfcece;
 }

@@ -2,14 +2,8 @@ import '../Styles/Header.scss';
 import { NavLink } from 'react-router-dom';
 import VKLogin from './VKLogin';
 import React from 'react';
-// window.onload = function () {
-//     let navbar = document.querySelector('.navbar');
-//     let body = document.getElementById('body');
-//     let offset = navbar.getBoundingClientRect().height;
-//     body.style.marginTop = `${offset}px`;
-// };
 
-function Header() {
+function Header(props) {
   return (
     <div className="navbar" >
       <header className="header">
@@ -22,7 +16,7 @@ function Header() {
               <li><button>ссылка</button></li>
               <li><button>ссылка</button></li>
             </ul>
-            <VKLogin/>
+            <VKLogin session={props.session} data={props.data} userLoginExit={props.userLoginExit}/>
           </nav>
         </main>
       </header>
