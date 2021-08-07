@@ -51,7 +51,7 @@ class App extends React.Component{
       <BrowserRouter>
             <ScrollToTop />
               <div>
-                <Header session={session} data={data} exiter ={this.userLoginExit}/>
+                <Header session={session} data={data} userLoginExit ={this.userLoginExit}/>
                 <div className="wrapper">
                   <Switch>
                     <Route exact path="/"><Block /></Route>
