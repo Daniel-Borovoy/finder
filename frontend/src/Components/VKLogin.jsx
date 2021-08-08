@@ -146,11 +146,17 @@ class VKLogin extends React.Component {
     
     // пользователь авторизован ВКонтакте, но не разрешил доступ приложению
     if (session === "not_authorized") {
-      alert("Приложение не может получить доступ к ВК!");
-      return null;
+      // alert("Нет доступа к данным аккаунта ВК.");
+      return (
+        <div style={loginButtonStyle} id='vk'>
+          <button type="button" style={{backgroundColor: "blue"}} onClick={this.onClickButton}>{loginButton}</button>
+          <img src={profileSRC} style={profileImgStyle} alt="" />
+        </div>
+      );
     }
     //пользователь не авторизован ВКонтакте
     if(session === "unknown") {
+      // alert("Вы не авторизованы.")
       return (
         <div style={loginButtonStyle} id='vk'>
           <button type="button" style={{backgroundColor: "blue"}} onClick={this.onClickButton}>{loginButton}</button>
