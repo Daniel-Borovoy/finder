@@ -141,3 +141,8 @@ button[type="button"]{
 .profile.open{
     background-color: #cfcece;
 }
+.profileButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
