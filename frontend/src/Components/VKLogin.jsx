@@ -50,7 +50,7 @@ class VKLogin extends React.Component {
     this.getTopMenuData = this.getTopMenuData.bind(this)
   }
 
-  // срабатывает при клике снаружи компонента
+  // срабатывает при клике снаружи компонента           `перестало работать (по крайней мере у меня) =( ` 
   handleClickOutside()  {
     if (this.state.open){
       this.setState({

@@ -24,17 +24,25 @@ class App extends React.Component{
   // проверка авторизации
   checkStatus () {
     VK.Auth.getLoginStatus((r) => {
-        if(r.session) {
-          this.setState({
-            session: r.status,
-            data: r
+      if (r.status === "not_authorized") { // пользователь авторизован ВКонтакте, но не разрешил доступ приложению
+        this.setState({
+          session: "not_authorized"
+          });
+        return;
+      }
+      else if(r.status === "connected") { // пользователь авторизован ВКонтакте и разрешил доступ приложению
+        this.setState({
+          session: r.status,
+          data: r
+        });
+        return;
+      }
+      else {                              // пользователь не авторизован ВКонтакте
+        this.setState({
+          session: "unknown"
           });
         }
-        else{
-          this.setState({
-            session: "unknown"
-          });
-        }
+        return;
       });
   }
 
