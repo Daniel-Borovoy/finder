@@ -26,9 +26,15 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>RE-FINDER</title>
+    <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script type="text/javascript">
+      VK.init({
+        apiId: 7905028
+      });
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -40,7 +46,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <div id="vk_api_transport"></div>
+    <!-- <div id="vk_api_transport"></div>
     <script type="text/javascript">
       window.vkAsyncInit = function() {
         VK.init({
@@ -52,6 +58,6 @@
       el.src = "https://vk.com/js/api/openapi.js?169";
       el.async = true;
       document.getElementById("vk_api_transport").appendChild(el);
-    </script>
+    </script> -->
   </body>
 </html>
