@@ -54,8 +54,8 @@ class App extends React.Component{
   render() {
     const session = this.state.session;
     const data = this.state.data;
-
-    return (
+    if (session === "connected" || session === "unknown" || session === "not_authorized") { // рендерим при ответе на запрос иначе ждём 
+      return (
       <BrowserRouter>
             <ScrollToTop />
               <div>
@@ -69,7 +69,10 @@ class App extends React.Component{
               </div>
             </BrowserRouter>
     );
-
+    }
+    else { 
+      return null;
+    }
   }
   
 };
