@@ -86,6 +86,7 @@ class VKLogin extends React.Component {
         loginButton = 'Авторизоваться';
         profileSRC = '';
         this.setState({
+          open: false,
           haveData: false
         });
         this.props.userLoginExit();
@@ -134,7 +135,7 @@ class VKLogin extends React.Component {
               <button onClick={this.setOpen}>Настройки</button>
               <button onClick={this.setOpen}>Помощь</button>
               <div className="top_profile_sep"></div>
-              <button onClick={this.onClickButton}>Выйти</button>
+              <button onClick={this.setOpen} onClick={this.onClickButton}>Выйти</button>
             </div>
           </div>
       );
