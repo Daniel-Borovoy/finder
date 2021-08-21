@@ -33,7 +33,6 @@
     }
     &:hover .avatar{
         margin-bottom: 35px;
-        transition: 0.5s;
     }
     .name{
         font-size: 16px;
@@ -43,7 +42,38 @@
         transition: 1s ease 0s;
         user-select: none;
     }
+    &.in__favorites {
+      position: relative;
+      background-color: #000;
+      pointer-events: none;
+      .name {
+        color: #fff;
+      }
+      
+      &:active {
+        background-color: red;
+      }
+    }
 }
+.close{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border-radius: 5px;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  border: none;
+}
+.close.active{
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
 
 // LOADER
 .lds-ring {

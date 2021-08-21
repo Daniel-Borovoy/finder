@@ -62,7 +62,7 @@ class VKLogin extends React.Component {
 
   getTopMenuData(r) {
       // запрос аватарки и имени юзера
-      VK.Api.call('users.get', { user_ids: r.session.mid, fields: 'photo_50', v: '5.73' }, (r) => {
+      VK.Api.call('users.get', { user_ids: r.session.mid, fields: 'photo_50', v: '5.131' }, (r) => {
           if (r.response && !this.state.haveData) {
             profileSRC = r.response[0].photo_50;
             profileName = r.response[0].first_name;
