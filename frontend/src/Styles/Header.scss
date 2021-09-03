@@ -84,7 +84,6 @@ button[type="button"]{
 
 .profile{
     height: 70px;
-    padding: 0 10px;
     position: relative;
     cursor: pointer;
     transition: .2s ease 0s;
@@ -144,5 +143,8 @@ button[type="button"]{
 .profileButton{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
+    width: inherit;
+    height: inherit;
 }

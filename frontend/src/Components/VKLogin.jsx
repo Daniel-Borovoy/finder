@@ -89,6 +89,7 @@ class VKLogin extends React.Component {
           open: false,
           haveData: false
         });
+        localStorage.clear();
         this.props.userLoginExit();
       });
     } 

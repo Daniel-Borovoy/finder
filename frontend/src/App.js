@@ -4,8 +4,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Block from './Components/Block';
 import Header from './Components/Header';
 import GroupsList from './Components/GroupsList';
+import Friends from './Components/Friends';
 import ScrollToTop from './Components/ScrollToTop';
-
+import { AudioList } from './Components/AudioList';
 
 class App extends React.Component{
   constructor() {
@@ -62,8 +63,10 @@ class App extends React.Component{
                 <Header session={session} data={data} userLoginExit ={this.userLoginExit}/>
                 <div className="wrapper">
                   <Switch>
-                    <Route exact path="/"><Block /></Route>
+                    <Route exact path="/"><Block/></Route>
                     <Route exact path="/groups"><GroupsList session={session} data={data} /></Route>
+                    <Route exact path="/audio"><AudioList></AudioList></Route>
+                    <Route exact path="/friends"><Friends></Friends></Route>
                   </Switch>
                 </div>
               </div>

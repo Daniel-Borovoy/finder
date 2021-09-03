@@ -1,6 +1,6 @@
 const VK = window.VK;
 
-import React from 'react';
+import React, { useRef } from 'react';
 // import { session, userId } from './VKLogin';
 import "../Styles/GroupCard.scss";
 
@@ -31,7 +31,7 @@ class GroupCard extends React.Component{
     if (localStorage.getItem(`${this.props.name}`) === 'true') {
       this.setState({
         inFavorites: true
-      })
+      });
     }
   }
 
@@ -45,13 +45,12 @@ class GroupCard extends React.Component{
     return (
       <div style={{position: "relative"}}>
         <div className={this.state.inFavorites ? "container in__favorites" : "container"} onClick={this.addFavorite}>
-          
           <div>
             <img alt="" src={this.props.imgURL} className="avatar" />
           </div>
           <div className="name"><b>{this.props.name}</b></div>
         </div>
-        <button className={this.state.inFavorites ? "close active" : "close"} onClick={this.addFavorite}>❌</button>
+        <button className={this.state.inFavorites ? "close active" : "close"} onClick={this.addFavorite} style={{color: '#fff'}}>DELETE</button>
       </div>
     );
   }
@@ -68,7 +67,7 @@ class GroupsList extends React.Component {
       haveData: hasLock ? true : false
     }
   }
-  
+
   getGroups() {
     if (!hasLock) {
       hasLock = true;
@@ -93,10 +92,10 @@ class GroupsList extends React.Component {
     });
   }
 
+  
 
   render() {
     const session = this.props.session;
-
     if (session !== "connected") {
       hasLock = false;
       groupArray = [];
@@ -108,9 +107,11 @@ class GroupsList extends React.Component {
    
     if(session === "connected" && this.state.haveData) {
       return (
-        <div style={{paddingTop: '70px'}}>
-          <div style={css}>{groupArray}</div>
-        </div>
+        <>
+          <div style={{paddingTop: '70px', position:'relative'}}>
+            <div style={css}>{groupArray}</div>
+          </div>
+        </>
       );
     }
     if (session === "not_authorized") {
