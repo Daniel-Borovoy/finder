@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../Styles/Friends.scss';
 let groupArray = []; // массив избранных групп
 function FavoritesGroups() {
     for (let i = 0; i < localStorage.length; i++) {
@@ -29,14 +29,20 @@ class Friends extends React.Component {
 
     render () {
         return (
-        <section>
-            <div className="section__body">
+        <>
+            <div className="favorite_list">
                 <ul>
-                    <h1>Список избранных групп:</h1>
+                    <h1>Избранные группы</h1>
                     <FavoritesGroups/>
                 </ul>
             </div>
-        </section>
+            
+            <section>
+                <div className="section__body">
+                    
+                </div>
+            </section>
+        </>
         );
     }
 }

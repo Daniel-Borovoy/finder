@@ -14,7 +14,7 @@ function Header(props) {
               <li><NavLink to="/"><button>Главная</button></NavLink></li>
               <li><NavLink to="/groups"><button>Группы</button></NavLink></li>
               <li><NavLink to="/audio"><button>Аудиозаписи</button></NavLink></li>
-              <li><NavLink to="/friends"><button>Еще не придумал</button></NavLink></li>
+              <li><NavLink to="/friends"><button>Friends</button></NavLink></li>
             </ul>
             <VKLogin session={props.session} data={props.data} userLoginExit={props.userLoginExit}/>
           </nav>

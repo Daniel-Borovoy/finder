@@ -1,11 +1,6 @@
 const VK = window.VK;
-
 import React from 'react';
-// import { renderGroups } from './GroupsList';
 import onClickOutside from "react-onclickoutside";
-// сессия юзера
-// export let session = false;
-// export let userId;
 // текст кнопки авторизации
 let loginButton = 'Авторизоваться';
 // ссылка на аватар юзера
@@ -26,8 +21,6 @@ const profileImgStyle = {
   borderRadius: '50%',
   marginRight: '10px',
   pointerEvents: 'none'
-  // position: 'absolute',
-  // left: '100%',
 };
 // стиль топ меню
 const profileStyle = {
@@ -141,7 +134,7 @@ class VKLogin extends React.Component {
           </div>
       );
     }
-    // при проверке
+    // лоадер при загрузке
     if (session === "check") {
       return (
         <div className="lds-ring"><div></div><div></div><div></div><div></div></div>

@@ -1,7 +1,7 @@
 const VK = window.VK;
 
-import React, { useRef } from 'react';
-// import { session, userId } from './VKLogin';
+import React from 'react';
+import GroupCard from './GroupCard';
 import "../Styles/GroupCard.scss";
 
 let groupCount = "200";
@@ -17,56 +17,16 @@ const css = {
   alignItems: 'center'
 };
 
-// карточка группы
-class GroupCard extends React.Component{
-  constructor (props) {
-    super(props);
-    this.state = {
-      inFavorites: false
-    }
-    this.addFavorite = this.addFavorite.bind(this);
-  }
-  
-  componentDidMount () {
-    if (localStorage.getItem(`${this.props.name}`) === 'true') {
-      this.setState({
-        inFavorites: true
-      });
-    }
-  }
-
-  addFavorite () {
-    const inFavorites = this.state.inFavorites;
-    localStorage.setItem(`${this.props.name}`, !inFavorites);
-    this.setState({inFavorites: !inFavorites});
-  }
-
-  render () {
-    return (
-      <div style={{position: "relative"}}>
-        <div className={this.state.inFavorites ? "container in__favorites" : "container"} onClick={this.addFavorite}>
-          <div>
-            <img alt="" src={this.props.imgURL} className="avatar" />
-          </div>
-          <div className="name"><b>{this.props.name}</b></div>
-        </div>
-        <button className={this.state.inFavorites ? "close active" : "close"} onClick={this.addFavorite} style={{color: '#fff'}}>DELETE</button>
-      </div>
-    );
-  }
-}
-
-
-
-
-// блок с группами
 class GroupsList extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
-      haveData: hasLock ? true : false
+      haveData: hasLock ? true : false,
+      doClear: false
     }
+    this.clearFavoriteListHandler = this.clearFavoriteListHandler.bind(this);
   }
+
 
   getGroups() {
     if (!hasLock) {
@@ -92,6 +52,10 @@ class GroupsList extends React.Component {
     });
   }
 
+
+  clearFavoriteListHandler () {
+    localStorage.clear();
+  }
   
 
   render() {
@@ -108,6 +72,7 @@ class GroupsList extends React.Component {
     if(session === "connected" && this.state.haveData) {
       return (
         <>
+         <button style={{position: "fixed", right: "15px", top: "100px"}} onClick={this.clearFavoriteListHandler}>Очистить</button>
           <div style={{paddingTop: '70px', position:'relative'}}>
             <div style={css}>{groupArray}</div>
           </div>

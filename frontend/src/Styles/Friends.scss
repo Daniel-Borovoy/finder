@@ -1,0 +1,29 @@
+.favorite_list{
+    position: fixed;
+    padding: 15px;
+    right: 30px;
+    top: 100px;
+    width: 320px;
+    height: auto;
+    box-shadow: 4px 4px 15px #d3d3d6, -4px -4px 15px #fff;
+    background-color: #f6f6f6;
+    border-radius: 25px;
+    ul{
+        
+        list-style: none;
+        h1{
+            font-size: 20px;
+            text-align: center;
+        }
+        li{
+            text-align: center;
+            margin-top: 10px;
+            border-radius: 25px;
+            padding: 10px 0;
+            &:hover{
+                cursor: pointer;
+                background-color: #eee;
+            }
+        }
+    }
+}
