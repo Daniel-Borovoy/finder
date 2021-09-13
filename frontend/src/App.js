@@ -1,14 +1,25 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Block from './Components/Block';
 import Header from './Components/Header';
 import GroupsList from './Components/GroupsList';
 import Friends from './Components/Friends';
 import ScrollToTop from './Components/ScrollToTop';
 import { AudioList } from './Components/AudioList';
+import { useHttp } from './hooks/http.hook'
+
+// const {loading, error, request} = useHttp()
+
+// const loginHandler = async () => {
+//   try {
+//     const data = await request('/api/auth/login', 'POST', 'userid')
+//     console.log('Data ', data)
+//   } catch (e) {}
+// }
 
 class App extends React.Component{
+
   constructor() {
     super();
     this.state = {
@@ -21,6 +32,19 @@ class App extends React.Component{
   componentDidMount() {
     this.checkStatus();
   }
+
+  // async VkLogin() {
+  //   const {loading, error, request} = useHttp()
+    
+  //   const loginHandler = async () => {
+  //     try {
+  //       const data = await request('/api/auth/login', 'POST', 'userid')
+  //       console.log('Data ', data)
+  //     } catch (e) {}
+  //   }
+
+  //   loginHandler()
+  // }
 
   // проверка авторизации
   checkStatus () {
@@ -36,6 +60,7 @@ class App extends React.Component{
           session: r.status,
           data: r
         });
+        
         return;
       }
       else {                              // пользователь не авторизован ВКонтакте
@@ -68,6 +93,7 @@ class App extends React.Component{
                     <Route exact path="/audio"><AudioList></AudioList></Route>
                     <Route exact path="/friends"><Friends></Friends></Route>
                   </Switch>
+                  <Redirect to='/'/>
                 </div>
               </div>
             </BrowserRouter>
@@ -77,7 +103,6 @@ class App extends React.Component{
       return null;
     }
   }
-  
 };
 
 export default App;
