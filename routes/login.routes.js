@@ -3,10 +3,14 @@ const User = require('../models/User')
 const router = Router()
 
 
+
 // /api/auth/login
 router.post('/login', async (req, res) =>{
     try {
+        console.log(req.body)
         const {userid} = req.body
+
+        
 
         const candidate = await User.findOne({userid})
 
@@ -23,6 +27,8 @@ router.post('/login', async (req, res) =>{
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+        console.log(e)
+        console.log(req.body)
     }
 })
 

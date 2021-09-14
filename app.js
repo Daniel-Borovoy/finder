@@ -4,6 +4,10 @@ const mongoose = require('mongoose')
 
 const app = express()
 
+
+app.use(express.json())
+app.use(express.urlencoded({extended: true}));
+
 app.use('/api/auth', require('./routes/login.routes'))
 
 const PORT = config.get('port') || 5000
