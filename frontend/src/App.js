@@ -16,7 +16,7 @@ const App = () => {
 
   const loginHandler = async (r) => {
     try {
-      const data = await request ('/api/auth/login', 'POST', JSON.stringify({userid: r.session.mid}), {"Content-Type": "application/json"})
+      const data = await request ('/api/auth/login', 'POST', {userid: r.session.mid})
       console.log('Data ', data)
     } catch (e) {console.log(e)}
   }

@@ -39,10 +39,12 @@ class GroupsList extends React.Component {
           groupCount = r.response.count;
         }
       VK.Api.call('groups.getById', { group_ids: r.response.items, v: '5.131' }, (r) => {
+          console.log(r.response)
           if(r.response) {
             for (let i = 0; i < groupCount; i++) {              
               groupArray.push(             
                 <GroupCard key={i + 1} name={r.response[i].name} imgURL={r.response[i].photo_100}/>
+                
               );
             }
             this.setState({haveData: true});

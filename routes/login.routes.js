@@ -7,7 +7,6 @@ const router = Router()
 // /api/auth/login
 router.post('/login', async (req, res) =>{
     try {
-        console.log(req.body)
         const {userid} = req.body
 
         
