@@ -1,15 +1,16 @@
-const VK = window.VK;
-
 import React from 'react';
 import GroupCard from './GroupCard';
 import "../Styles/GroupCard.scss";
-
+import {connect} from 'react-redux';
+import {cleaner} from '../redux/actions';
 let groupCount = "200";
 let groupArray = [];
 let hasLock = false;
+const VK = window.VK;
 
 
 const css = {
+  position: 'relative',
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
@@ -21,12 +22,10 @@ class GroupsList extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
-      haveData: hasLock ? true : false,
-      doClear: false
+      haveData: hasLock ? true : false
     }
     this.clearFavoriteListHandler = this.clearFavoriteListHandler.bind(this);
   }
-
 
   getGroups() {
     if (!hasLock) {
@@ -42,7 +41,7 @@ class GroupsList extends React.Component {
           if(r.response) {
             for (let i = 0; i < groupCount; i++) {              
               groupArray.push(             
-                <GroupCard key={i + 1} name={r.response[i].name} imgURL={r.response[i].photo_100}/>
+                <GroupCard checkFavoritesGroupsLenght={this.checkFavoritesGroupsLenght} key={i + 1} name={r.response[i].name} imgURL={r.response[i].photo_100}/>
               );
             }
             this.setState({haveData: true});
@@ -55,11 +54,12 @@ class GroupsList extends React.Component {
 
   clearFavoriteListHandler () {
     localStorage.clear();
+    this.props.cleaner();
   }
-  
 
   render() {
     const session = this.props.session;
+    const localLenght = localStorage.length;
     if (session !== "connected") {
       hasLock = false;
       groupArray = [];
@@ -72,9 +72,12 @@ class GroupsList extends React.Component {
     if(session === "connected" && this.state.haveData) {
       return (
         <>
-         <button style={{position: "fixed", right: "15px", top: "100px"}} onClick={this.clearFavoriteListHandler}>Очистить</button>
-          <div style={{paddingTop: '70px', position:'relative'}}>
-            <div style={css}>{groupArray}</div>
+          <div style={{paddingTop: '70px'}}>
+            
+            <div style={css} >
+              {groupArray}
+             <button className={localLenght ? "cleanButton" : "cleanButton disable"} onClick={this.clearFavoriteListHandler}>Очистить всё</button>
+            </div>
           </div>
         </>
       );
@@ -90,5 +93,9 @@ class GroupsList extends React.Component {
     );
   }
 }
-
-export default GroupsList;
+const mapDispatchToProps = {
+  cleaner
+}
+const mapStateToProps = (state) => ({ clean: state.clean });
+// const mapStateToProps = (state) => ({ clean: state.clean });
+export default connect(mapStateToProps, mapDispatchToProps)(GroupsList);

@@ -23,6 +23,7 @@ export const AudioList = () => {
             console.log(audioList.response.items[i], i+1);
         }
     }
-    getAudioList();
-    return (<p>{list}</p>);
+    // getAudioList();
+    // return (<p>{list}</p>);
+    return null;
 }
