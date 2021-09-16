@@ -1,0 +1,31 @@
+{
+  "name": "finder",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel-Borovoy/finder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel-Borovoy/finder/issues"
+  },
+  "homepage": "https://github.com/Daniel-Borovoy/finder#readme",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.5"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.12"
+  }
+}
