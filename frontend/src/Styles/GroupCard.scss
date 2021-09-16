@@ -12,16 +12,16 @@
     border-radius: 50px;
     background-color: #f0f0f3;
     cursor: pointer;
-    transition: 0.1s;
+    transition: 0.5s;
     box-shadow: 4px 4px 15px #d3d3d6,
                 -4px -4px 15px #fff;
     top: 5px;
     &:hover{
-        top: 0px;}
-    //     box-shadow: 10px 10px 21px #d3d3d6,
-    //             -10px -10px 21px #fff;
-    //     transition: 0.5s;
-    // }
+        top: 0px;
+        box-shadow: 10px 10px 21px #d3d3d6,
+                -10px -10px 21px #fff;
+        transition: 0.5s;
+    }
     // &:hover .name{
     //     color: #000;
     // }
@@ -43,11 +43,11 @@
         user-select: none;
     }
     &.in__favorites {
-        box-shadow: 10px 10px 21px #d3d3d6,
-                -10px -10px 21px #fff;
         transition: 0.5s;
       position: relative;
-      background-color: rgb(78, 78, 78);
+      // background-color: rgb(235, 221, 234);
+      background-color: rgb(0, 0, 0);
+      top: 5px;
       // pointer-events: none;
       .name {
         color: #fff;
@@ -114,9 +114,10 @@
   
 .cleanButton{
   @media (max-width: 767px) {
-    bottom: 0;
+    right: 5%;
+    bottom: 5px;
     top:auto;
-    width: 100vw;
+    width: 90vw;
     padding: 10px 15px;
   }
   position: fixed;

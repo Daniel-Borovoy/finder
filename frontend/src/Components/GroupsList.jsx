@@ -76,7 +76,7 @@ class GroupsList extends React.Component {
             
             <div style={css} >
               {groupArray}
-             <button className={localLenght ? "cleanButton" : "cleanButton disable"} onClick={this.clearFavoriteListHandler}>Очистить всё</button>
+              <button className={localLenght ? "cleanButton" : "cleanButton disable"} onClick={this.clearFavoriteListHandler}>Очистить всё</button>
             </div>
           </div>
         </>
