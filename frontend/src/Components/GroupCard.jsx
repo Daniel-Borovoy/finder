@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import {cleaner} from '../redux/actions';
 
-//          карточка группы
+//  карточка группы
 class GroupCard extends React.Component {
     constructor (props) {
       super(props);
@@ -11,36 +13,43 @@ class GroupCard extends React.Component {
     }
     
     componentDidMount () {
-      if (localStorage.getItem(`${this.props.name}`) === 'true') {
+      if (localStorage.getItem(`${this.props.name}`)) {
         this.setState({
           inFavorites: true
         });
       }
     }
     
-
     addFavoriteHandler () {
-      const inFavorites = this.state.inFavorites;
-      localStorage.setItem(`${this.props.name}`, !inFavorites);
-      this.setState({inFavorites: !inFavorites});
+      if (localStorage.getItem(`${this.props.name}`)) {
+        localStorage.removeItem(`${this.props.name}`);
+        this.setState({inFavorites: false});
+      }
+      else {
+        localStorage.setItem(`${this.props.name}`, "group");
+        this.setState({inFavorites: true});
+      }
+      this.props.cleaner();
     }
   
     render () {
-        const inFavorites = localStorage.getItem(`${this.props.name}`) === 'true' ? true : false;
+        const inFavorites = localStorage.getItem(`${this.props.name}`) ? true : false;
         return (
             <div style={{position: "relative"}} >
                 {/* Card */}
             <div className={inFavorites ? "container in__favorites" : "container"} onClick={this.addFavoriteHandler}>
                 <div>
-                <img alt="" src={this.props.imgURL} className="avatar" />
+                <img alt="" src={this.props.imgURL} className={inFavorites ? "avatar in__favorites" : "avatar"} />
                 </div>
                 <div className="name"><b>{this.props.name}</b></div>
             </div>
-            {/* Close button */}
-            <button className={inFavorites ? "close active" : "close"} onClick={this.addFavoriteHandler} style={{color: '#fff'}}>DELETE</button>
             </div>
         );
     }
 }
+const mapDispatchToProps = {
+  cleaner
+}
+const mapStateToProps = (state) => ({ clean: state.clean });
 
-export default GroupCard;
+export default connect(mapStateToProps, mapDispatchToProps)(GroupCard);

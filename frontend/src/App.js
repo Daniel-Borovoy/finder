@@ -59,7 +59,7 @@ class App extends React.Component{
       return (
       <BrowserRouter>
             <ScrollToTop />
-              <div>
+              <div style={{position: 'relative'}}>
                 <Header session={session} data={data} userLoginExit ={this.userLoginExit}/>
                 <div className="wrapper">
                   <Switch>

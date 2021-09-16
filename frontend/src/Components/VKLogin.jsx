@@ -44,7 +44,7 @@ class VKLogin extends React.Component {
   }
 
   // срабатывает при клике снаружи компонента
-  handleClickOutside()  {
+  handleClickOutside(event)  {
     if (this.state.open){
       this.setState({
         open: false 

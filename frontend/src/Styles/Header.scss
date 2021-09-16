@@ -3,9 +3,11 @@
     z-index: 100;
     position: fixed;
     width: 100vw;
-    height: 70px;
+    height: 55px;
     top: 0;
     left: 0;
+    right: 0;
+    
     .header{
         font-family: 'Montserrat', sans-serif;
         background-color: #f6f6f6;
@@ -22,8 +24,12 @@
             align-items: center;
             .text{
                 margin: 0;
+                font-size: 1.5rem;
                 color: #000;
                 user-select: none;
+                @media (max-width: 767px) {
+                    font-size: 1.5rem;
+                }
             }
             nav{
                 display: flex;
@@ -44,6 +50,7 @@
                         font-weight: 700;
                         cursor: pointer;
                         user-select: none;
+                        font-size: 1rem;
                     }
                     button{
                         color: rgba(0,0,0,0.6);
@@ -62,7 +69,9 @@
         }
     }
 }
-
+.navbar.mobile {
+    height: 70px;
+}
 
 /* стили для топ логина (VK LOGIN) */
 button[type="button"]{
@@ -83,12 +92,17 @@ button[type="button"]{
 }
 
 .profile{
-    height: 70px;
+    height: 55px;
     position: relative;
     cursor: pointer;
     transition: .2s ease 0s;
     width: 150px;
     user-select: none;
+    @media (max-width: 424px) {
+        width: 100%;
+        height: 20vh;
+        margin-bottom: 20px;
+    }
     &:hover{
         background-color: #dedede;
     }
@@ -148,3 +162,73 @@ button[type="button"]{
     width: inherit;
     height: inherit;
 }
+.mobile__menu{
+    position: fixed;
+    left: -100vw;
+    top: 0;
+    opacity: .5;
+    bottom: 0;
+    height: 100vh;
+    width: 70vw;
+    background-color: rgb(233, 233, 233);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    transition: .5s ease-out 0s;
+    ul {
+        list-style: none;
+        overflow-y: auto;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        li {
+
+            width: inherit;
+            margin-bottom: 10px;
+            button{
+                background-color: rgba(0, 0, 0, 0);
+                font-family: "Montserrat", sans-serif;
+                font-weight: 700;
+                // color: #fff;
+                height: 3rem;
+                width: 100%;
+                overflow: hidden;
+                border: none;
+                text-align: start;
+                padding: 0 5px;
+                transition: 1s ease 0s;
+                &:hover{
+                    background-color: #333;
+                }
+            }
+        }
+    }
+}
+.mobile__menu.open {
+    left: 0;
+    opacity: 1;
+}
+
+  
+  .burger {  
+    width: 50px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  span {
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    height: 8px;
+    background: rgb(0, 0, 0);
+    transition: all .3s;
+    position: relative;
+  }
+  span + span {
+    margin-top: 7px;
+  }
+  

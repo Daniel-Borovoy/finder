@@ -4,13 +4,16 @@ section{
     display: flex;
     justify-content: center;
     .section__body{
-        height: 100%;
+        overflow: hidden;
+        min-height: 100%;
         max-width: 1200px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         .title{
-            font-size: 12vh;
+            padding: 0 15px;
+            font-size: 9vmin;
+            white-space:nowrap;
             font-family: 'Montserrat', sans-serif;
             font-weight: 450;
         }

@@ -22,16 +22,16 @@
                 -10px -10px 21px #fff;
         transition: 0.5s;
     }
-    &:hover .name{
-        color: #000;
-    }
+    // &:hover .name{
+    //     color: #000;
+    // }
     .avatar{
         width: 100px;
         height: 100px;
         border-radius: 50%;
         transition: 0.5s;
     }
-    &:hover .avatar{
+    .avatar.in__favorites{
         margin-bottom: 35px;
     }
     .name{
@@ -43,15 +43,14 @@
         user-select: none;
     }
     &.in__favorites {
+        transition: 0.5s;
       position: relative;
-      background-color: #000;
-      pointer-events: none;
+      // background-color: rgb(235, 221, 234);
+      background-color: rgb(0, 0, 0);
+      top: 5px;
+      // pointer-events: none;
       .name {
         color: #fff;
-      }
-      
-      &:active {
-        background-color: red;
       }
     }
 }
@@ -60,10 +59,10 @@
   right: 20px;
   top: 20px;
   border-radius: 5px;
-  background-color: #000;
   text-align: center;
   cursor: pointer;
   opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
   visibility: hidden;
   border: none;
 }
@@ -113,3 +112,37 @@
     }
   }
   
+.cleanButton{
+  @media (max-width: 767px) {
+    right: 5%;
+    bottom: 5px;
+    top:auto;
+    width: 90vw;
+    padding: 10px 15px;
+  }
+  position: fixed;
+  right: 0px;
+  top: 55px;
+  z-index: 3;
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(128, 128, 128);
+  border: 1px solid #adadad;
+  border-radius: 25px;
+  background-color: #e6e6e6;
+  padding: 15px 30px;
+  cursor: pointer;
+  font-size: 32px;
+  transition: 1s ease 0s;
+  &:hover {
+    background-color: #c7c7c7;
+    color: #000;
+  }
+  &:active{
+    background-color: #999999;
+  }
+  transition: .2s ease 0s;
+}
+.cleanButton.disable {
+  opacity: 0;
+  visibility: hidden;
+}
