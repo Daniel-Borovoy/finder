@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import Block from './Components/Block';
-import Header from './Components/Header';
-import GroupsList from './Components/GroupsList';
-import Friends from './Components/Friends';
-import ScrollToTop from './Components/ScrollToTop';
-import { AudioList } from './Components/AudioList';
+import React, { useEffect, useState } from 'react'
+import './App.css'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
+import Block from './Components/Block'
+import Header from './Components/Header'
+import GroupsList from './Components/GroupsList'
+import Friends from './Components/Friends'
+import ScrollToTop from './Components/ScrollToTop'
+import { AudioList } from './Components/AudioList'
 import { useHttp } from './hooks/http.hook'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { vkData } from './redux/actions'
 const App = () => {
   const [session, setSession] = useState(String)
-  const [data, setData] = useState({})
+  // const [data, setData] = useState({})
   const {loading, error, request} = useHttp()
+  const dispath = useDispatch()
+  const dataVK = useSelector((state) => state.dataVK)
 
   const loginHandler = async (r) => {
     try {
@@ -25,36 +28,39 @@ const App = () => {
   const checkStatus = () => {
     VK.Auth.getLoginStatus((r) => {
       if (r.status === "not_authorized") { // пользователь авторизован ВКонтакте, но не разрешил доступ приложению
-        setSession(r.status)
-        return;
+        // setSession(r.status)
+        dispath(vkData(r))
+        return
       }
       else if(r.status === "connected") { // пользователь авторизован ВКонтакте и разрешил доступ приложению
-        setData(r)
-        setSession(r.status)
+        // setData(r)
+        // setSession(r.status)
         loginHandler(r)
-        return;
+        dispath(vkData(r))
+        return
       }
       else {                              // пользователь не авторизован ВКонтакте
-        setSession(r.status)
+        // setSession(r.status)
+        dispath(vkData(r))
+        return
         }
-        return;
-      });
+      })
   }
 
   useEffect(() => checkStatus(), [])
 
   const userLoginExit = () => checkStatus()
 
-  if (session) { // рендерим при ответе на запрос иначе ждём 
+  if (dataVK) { // рендерим при ответе на запрос иначе ждём 
     return (
     <BrowserRouter>
           <ScrollToTop />
             <div>
-              <Header session={session} data={data} userLoginExit ={userLoginExit}/>
+              <Header/>
               <div className="wrapper">
                 <Switch>
                   <Route exact path="/"><Block/></Route>
-                  <Route exact path="/groups"><GroupsList session={session} data={data} /></Route>
+                  <Route exact path="/groups"><GroupsList  /></Route>
                   <Route exact path="/audio"><AudioList></AudioList></Route>
                   <Route exact path="/friends"><Friends></Friends></Route>
                 </Switch>
@@ -67,4 +73,4 @@ const App = () => {
     return null
 }
 
-export default App;
+export default App

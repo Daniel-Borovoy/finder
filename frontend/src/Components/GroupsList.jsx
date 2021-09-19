@@ -10,12 +10,13 @@ let groupCount = "200"
 let groupArray = []
 let hasLock = false
 
-function GroupsList ({session, data}) {
+function GroupsList () {
     const clean = useSelector((state) => state.clean)
     const localStorageLenght = localStorage.length
     const [haveData, setHaveData] = useState(hasLock ? true : false)
+    const data = useSelector((state) => state.dataVK)
+    const session = data.status
     const dispath = useDispatch()
-    // const [loading, setLoading] = useState(true)
     // useEffect(() => {
     //   return hasLock = false
     // })

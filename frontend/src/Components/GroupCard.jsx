@@ -1,11 +1,10 @@
-import React, {useState, useEffect } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
-import {cleaner} from '../redux/actions'
+import { cleaner } from '../redux/actions'
 
 //карточка группы
 function GroupCard ({name, imgURL}) {
-  // const initialState = localStorage.getItem(name) ? true : false
-  const dispath = useDispatch()
+  const dispatch = useDispatch()
   const cleanerCheck = useSelector((state) => state.clean)
   const inFavorites = localStorage.getItem(name) ? true : false
 
@@ -16,7 +15,7 @@ function GroupCard ({name, imgURL}) {
     else {
       localStorage.setItem(name, "group")
     }
-    dispath(cleaner())  
+    dispatch(cleaner())  
   }
     return (
       <div className={inFavorites ? "container in__favorites" : "container"} onClick={addFavoriteHandler}>

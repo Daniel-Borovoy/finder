@@ -6,35 +6,21 @@ import '../Styles/VKLogin.scss'
 import HelpIcon from '../images/help.png'
 import SettingsIcon from '../images/settings.png'
 import ExitIcon from '../images/exit.png'
-
-// ссылка на аватар юзера
-let profileSRC
-// имя юзера
+import { useDispatch, useSelector } from 'react-redux'
+import { vkData } from '../redux/actions'
+// данные юзера
 let profileFirstName
 let profileLastName
-// стиль для аватара юзера
-const profileImgStyle = {
-  marginLeft: '15px',
-  width: '35px',
-  borderRadius: '50%',
-  marginRight: '10px',
-  pointerEvents: 'none'
-}
-// стиль топ меню
-const profileStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  fontSize: '12px',
-}
+let profileSRC // ссылка на аватар юзера
 
-function VKLogin ({session, data, userLoginExit})  {
+function VKLogin ()  {
+  const dispath = useDispatch()
+  const VK = window.VK
+  const data = useSelector((state) => state.dataVK)
+  const session = data.status
   const [open, setOpen] = useState(false)
   const [haveData, setHaveData] = useState(false)
-  const [openSubmenu, setOpenSubmenu] = useState(false)
-  const VK = window.VK
-
-
+  const [openSubmenu, setOpenSubmenu] = useState(false) // для мобилок
   const isMobile = useMediaQuery('(max-width: 424px)')
   const isTablet = useMediaQuery('(min-width: 401px) and (max-width: 640px)')
   const isDesktop = useMediaQuery('(min-width: 641px) and (max-width: 1024px)')
@@ -61,12 +47,13 @@ function VKLogin ({session, data, userLoginExit})  {
   function onClickButton() {
         // если пользователь авторизирован - выходим, не авторизирован - заходим
         if (session === "connected") {
-          VK.Auth.logout(() => {
+          VK.Auth.logout((r) => {
+            console.log(r)
             profileSRC = ''
             setOpen(false)
             setHaveData(false)
             localStorage.clear()
-            userLoginExit()
+            dispath(vkData(r))
           })
         }
         else {
@@ -74,7 +61,7 @@ function VKLogin ({session, data, userLoginExit})  {
             if (r.session) {
               /* Пользователь успешно авторизовался */
               getTopMenuData(r)
-              userLoginExit()
+              dispath(vkData(r))
               if (r.settings) {
                 /* Выбранные настройки доступа пользователя, если они были запрошены */
               }
@@ -110,10 +97,10 @@ function VKLogin ({session, data, userLoginExit})  {
       )
     }
     return (
-        <div style={profileStyle} className={open ? "profile open" : "profile"} >
+        <div className={open ? "profile open" : "profile"} >
           <div className="profileButton" onClick={() => setOpen(!open)}>
             <h3>{profileFirstName}</h3>
-            <img src={profileSRC} style={profileImgStyle} alt="" />
+            <img src={profileSRC} alt="" />
             <svg className={open ? "arrow rotate" : "arrow"} fill="none" height="8" viewBox="0 0 12 8" width="12" xmlns="http://www.w3.org/2000/svg"><path clipRule="evenodd" d="M2.16 2.3a.75.75 0 011.05-.14L6 4.3l2.8-2.15a.75.75 0 11.9 1.19l-3.24 2.5c-.27.2-.65.2-.92 0L2.3 3.35a.75.75 0 01-.13-1.05z" fill="currentColor" fillRule="evenodd"></path></svg>
           </div>
           <div className={open ? "top_profile_menu open" : "top_profile_menu"}>

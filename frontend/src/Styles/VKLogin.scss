@@ -1,4 +1,3 @@
-/* стили для топ логина (VK LOGIN) */
 button[type="button"]{
     border: none;
     font-family: 'Montserrat', sans-serif;
@@ -17,6 +16,10 @@ button[type="button"]{
 }
 
 .profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12px;
     height: 55px;
     position: relative;
     cursor: pointer;
@@ -86,12 +89,18 @@ button[type="button"]{
     align-items: center;
     width: inherit;
     height: inherit;
+    img {
+        margin-left: 15px;
+        width: 40px;
+        border-radius: 25px;
+        margin-right: 10px;
+        pointer-events: none;
+    }
 }
 
 .mobile_profile{
     display: flex;
     flex-direction: column;
-    // padding: 10px;
     width: inherit;
     height: auto;
     background-color: #f1f1f1;

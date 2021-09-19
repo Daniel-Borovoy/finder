@@ -9,17 +9,18 @@ import HomeIcon from '../images/home.png'
 import GroupIcon from '../images/groups.png'
 import AudioIcon from '../images/audio.png'
 import FriendsIcon from '../images/friends.png'
+import { useSelector } from 'react-redux'
 
 const initialState = false
 
-function Header({session, data, userLoginExit}) {
+function Header() {
 
   const [open, setOpen] = useState(initialState)
   const isMobile = useMediaQuery('(max-width: 424px)')
   const isTablet = useMediaQuery('(min-width: 401px) and (max-width: 640px)')
   const isDesktop = useMediaQuery('(min-width: 641px) and (max-width: 1024px)')
   const isLargeDesktop = useMediaQuery('(min-width: 1025px)')
-  
+  const session = useSelector((state) => state.dataVK.status)
   Header.handleClickOutside = () => setOpen(false)
 
   if (isMobile) {
@@ -37,7 +38,7 @@ function Header({session, data, userLoginExit}) {
       </header>
       
         <nav className={open ? "mobile__menu open" : "mobile__menu"}> 
-          <VKLogin session={session} data={data} userLoginExit={userLoginExit}/>
+          <VKLogin/>
           {session === "connected" &&
           <ul className="links">
             <li><NavLink to="/"><button onClick={() => setOpen(false)}><img width='30px' src={HomeIcon}></img><h1>Главная</h1></button></NavLink></li>
@@ -50,7 +51,6 @@ function Header({session, data, userLoginExit}) {
             <button style={{border: 'none'}}><h1>Помощь</h1></button>
           }
         </nav>
-      
     </div>
     )
   }
@@ -66,7 +66,7 @@ function Header({session, data, userLoginExit}) {
               <li><NavLink to="/audio"><button>Аудиозаписи</button></NavLink></li>
               <li><NavLink to="/friends"><button>Friends</button></NavLink></li>
             </ul>
-            <VKLogin session={session} data={data} userLoginExit={userLoginExit}/>
+            <VKLogin/>
           </nav>
         </main>
       </header>
