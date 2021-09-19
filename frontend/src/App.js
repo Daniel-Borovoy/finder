@@ -43,12 +43,7 @@ const App = () => {
 
   useEffect(() => checkStatus(), [])
 
-
-  
-
-  function userLoginExit () {
-    checkStatus();
-  }
+  const userLoginExit = () => checkStatus()
 
   if (session) { // рендерим при ответе на запрос иначе ждём 
     return (
@@ -67,11 +62,9 @@ const App = () => {
               </div>
             </div>
           </BrowserRouter>
-      );
+      )
     }
-    else { 
-      return null;
-    }
+    return null
 }
 
 export default App;

@@ -1,0 +1,43 @@
+.group_list{
+    position: relative;
+    display: flex;
+    padding-top: 70px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.cleanButton{
+    @media (max-width: 767px) {
+      right: 5%;
+      bottom: 5px;
+      top:auto;
+      width: 90vw;
+      padding: 10px 15px;
+    }
+    position: fixed;
+    right: 0px;
+    top: 55px;
+    z-index: 3;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(128, 128, 128);
+    border: 1px solid #adadad;
+    border-radius: 25px;
+    background-color: #e6e6e6;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 32px;
+    transition: 1s ease 0s;
+    &:hover {
+      background-color: #c7c7c7;
+      color: #000;
+    }
+    &:active{
+      background-color: #999999;
+    }
+    transition: .2s ease 0s;
+  }
+  .cleanButton.disable {
+    opacity: 0;
+    visibility: hidden;
+  }

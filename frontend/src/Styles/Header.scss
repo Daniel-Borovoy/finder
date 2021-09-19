@@ -73,95 +73,10 @@
     height: 70px;
 }
 
-/* стили для топ логина (VK LOGIN) */
-button[type="button"]{
-    border: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    color: rgba(255,255,255,0.65);
-    border-radius: 24px;
-    padding: 10px 40px;
-    transition: .4s ease 0s;
-    &:hover{
-        color:#fff;
-    }
-    &:active{
-        opacity: .4;
-    }
-}
 
-.profile{
-    height: 55px;
-    position: relative;
-    cursor: pointer;
-    transition: .2s ease 0s;
-    width: 150px;
-    user-select: none;
-    @media (max-width: 424px) {
-        width: 100%;
-        height: 20vh;
-        margin-bottom: 20px;
-    }
-    &:hover{
-        background-color: #dedede;
-    }
-    .arrow{
-        transition: .25s ease 0s; 
-     }
-     .arrow.rotate{
-         transform: rotate(0.5turn);
-     }
-     .top_profile_menu{
-         cursor: default;
-         visibility: hidden;
-         opacity: 0;
-         transition: .2s ease 0s;
-         position: absolute;
-         padding: 30px 0;
-         top: 100%;
-         right: 0;
-         display: flex;
-         color: #000;
-         flex-direction: column;
-         justify-content: center;
-         align-items: center;
-         background-color: #e7e7e7;
-         button{
-             cursor: pointer;
-             border: none;
-             width: 150px;
-             padding: 10px;
-             background-color: #e7e7e7;
-             font-size: 16px;
-             font-family: 'Montserrat', sans-serif;
-             font-weight: 500;
-             &:hover{
-                 background-color: #d5d5d5;
-             }
-         }
-         .top_profile_sep{
-             width: 80%;
-             margin: 4px 13px;
-             border-top: 1px solid #929292;
-         }
-     }
-     .top_profile_menu.open{
-         visibility: visible;
-         opacity: 1;
-     }
-}
-.profile.open{
-    background-color: #cfcece;
-}
-.profileButton{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: inherit;
-    height: inherit;
-}
+
+
+
 .mobile__menu{
     position: fixed;
     left: -100vw;
@@ -185,25 +100,34 @@ button[type="button"]{
         justify-content: center;
         align-items: center;
         li {
-
             width: inherit;
             margin-bottom: 10px;
-            button{
-                background-color: rgba(0, 0, 0, 0);
-                font-family: "Montserrat", sans-serif;
-                font-weight: 700;
-                // color: #fff;
-                height: 3rem;
-                width: 100%;
-                overflow: hidden;
-                border: none;
-                text-align: start;
-                padding: 0 5px;
-                transition: 1s ease 0s;
-                &:hover{
-                    background-color: #333;
+            a {
+                text-decoration: none;
+                h1 {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 500;
+                    margin-left: 15px;
+                }
+                button{
+                    display: flex;
+                    align-items: center;
+                    background-color: rgba(0, 0, 0, 0);
+                    font-family: "Montserrat", sans-serif;
+                    font-weight: 700;
+                    height: 3rem;
+                    width: 100%;
+                    overflow: hidden;
+                    border: none;
+                    text-align: start;
+                    padding: 0 5px;
+                    transition: 1s ease 0s;
+                    &:hover{
+                        background-color: #333;
+                    }
                 }
             }
+            
         }
     }
 }
@@ -217,6 +141,7 @@ button[type="button"]{
     width: 50px;
     cursor: pointer;
     border: none;
+    user-select: none;
   }
   
   span {
@@ -224,9 +149,9 @@ button[type="button"]{
     width: 100%;
     border-radius: 3px;
     height: 8px;
-    background: rgb(0, 0, 0);
+    background: #000;
     transition: all .3s;
-    position: relative;
+    
   }
   span + span {
     margin-top: 7px;

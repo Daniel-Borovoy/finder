@@ -1,4 +1,5 @@
 .container{
+    user-select: none;
     display: flex;
     position: relative;
     justify-content: center;
@@ -22,10 +23,8 @@
                 -10px -10px 21px #fff;
         transition: 0.5s;
     }
-    // &:hover .name{
-    //     color: #000;
-    // }
     .avatar{
+        user-select: none;
         width: 100px;
         height: 100px;
         border-radius: 50%;
@@ -54,26 +53,6 @@
       }
     }
 }
-.close{
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0);
-  visibility: hidden;
-  border: none;
-}
-.close.active{
-  opacity: 1;
-  visibility: visible;
-}
-
-
-
-
 // LOADER
 .lds-ring {
     display: flex;
@@ -111,38 +90,3 @@
       transform: rotate(360deg);
     }
   }
-  
-.cleanButton{
-  @media (max-width: 767px) {
-    right: 5%;
-    bottom: 5px;
-    top:auto;
-    width: 90vw;
-    padding: 10px 15px;
-  }
-  position: fixed;
-  right: 0px;
-  top: 55px;
-  z-index: 3;
-  font-family: 'Montserrat', sans-serif;
-  color: rgb(128, 128, 128);
-  border: 1px solid #adadad;
-  border-radius: 25px;
-  background-color: #e6e6e6;
-  padding: 15px 30px;
-  cursor: pointer;
-  font-size: 32px;
-  transition: 1s ease 0s;
-  &:hover {
-    background-color: #c7c7c7;
-    color: #000;
-  }
-  &:active{
-    background-color: #999999;
-  }
-  transition: .2s ease 0s;
-}
-.cleanButton.disable {
-  opacity: 0;
-  visibility: hidden;
-}

@@ -1,19 +1,27 @@
-import '../Styles/Header.scss';
-import { NavLink } from 'react-router-dom';
-import VKLogin from './VKLogin';
-import React, { useState } from 'react';
-import useMediaQuery from 'react-use-media-query-hook';
-import onClickOutside from "react-onclickoutside";
+import '../Styles/Header.scss'
+import { NavLink } from 'react-router-dom'
+import VKLogin from './VKLogin'
+import React, { useState } from 'react'
+import useMediaQuery from 'react-use-media-query-hook'
+import onClickOutside from "react-onclickoutside"
+// импорт иконок
+import HomeIcon from '../images/home.png'
+import GroupIcon from '../images/groups.png'
+import AudioIcon from '../images/audio.png'
+import FriendsIcon from '../images/friends.png'
 
-const initialState = false;
-function Header(props) {
-  const [open, setOpen] = useState(initialState);
-  const isMobile = useMediaQuery('(max-width: 424px)');
-  const isTablet = useMediaQuery('(min-width: 401px) and (max-width: 640px)');
-  const isDesktop = useMediaQuery('(min-width: 641px) and (max-width: 1024px)');
-  const isLargeDesktop = useMediaQuery('(min-width: 1025px)');
+const initialState = false
+
+function Header({session, data, userLoginExit}) {
+
+  const [open, setOpen] = useState(initialState)
+  const isMobile = useMediaQuery('(max-width: 424px)')
+  const isTablet = useMediaQuery('(min-width: 401px) and (max-width: 640px)')
+  const isDesktop = useMediaQuery('(min-width: 641px) and (max-width: 1024px)')
+  const isLargeDesktop = useMediaQuery('(min-width: 1025px)')
   
-  Header.handleClickOutside = () => setOpen(false);
+  Header.handleClickOutside = () => setOpen(false)
+
   if (isMobile) {
     return (
       <div className="navbar mobile" >
@@ -27,17 +35,24 @@ function Header(props) {
             <NavLink to="/" style={{textDecoration: "none"}}><h1 className="text">RE-FINDER</h1></NavLink>
         </main>
       </header>
-      <nav className={open ? "mobile__menu open" : "mobile__menu"}> 
-            <VKLogin session={props.session} data={props.data} userLoginExit={props.userLoginExit}/>
-            <ul className="links">
-              <li><NavLink to="/"><button onClick={() => setOpen(false)}>Главная</button></NavLink></li>
-              <li><NavLink to="/groups"><button onClick={() => setOpen(false)}>Группы</button></NavLink></li>
-              <li><NavLink to="/audio"><button onClick={() => setOpen(false)}>Аудиозаписи</button></NavLink></li>
-              <li><NavLink to="/friends"><button onClick={() => setOpen(false)}>Друзья</button></NavLink></li>
-            </ul>
-      </nav>
+      
+        <nav className={open ? "mobile__menu open" : "mobile__menu"}> 
+          <VKLogin session={session} data={data} userLoginExit={userLoginExit}/>
+          {session === "connected" &&
+          <ul className="links">
+            <li><NavLink to="/"><button onClick={() => setOpen(false)}><img width='30px' src={HomeIcon}></img><h1>Главная</h1></button></NavLink></li>
+            <li><NavLink to="/groups"><button onClick={() => setOpen(false)}><img width='30px' src={GroupIcon}></img><h1>Группы</h1></button></NavLink></li>
+            <li><NavLink to="/audio"><button onClick={() => setOpen(false)}><img width='30px' src={AudioIcon}></img><h1>Аудио</h1></button></NavLink></li>
+            <li><NavLink to="/friends"><button onClick={() => setOpen(false)}><img width='30px' src={FriendsIcon}></img><h1>Друзья</h1></button></NavLink></li>
+          </ul>
+          }
+          {session !== "connected" && 
+            <button style={{border: 'none'}}><h1>Помощь</h1></button>
+          }
+        </nav>
+      
     </div>
-    );
+    )
   }
   return (
     <div className="navbar" >
@@ -51,16 +66,16 @@ function Header(props) {
               <li><NavLink to="/audio"><button>Аудиозаписи</button></NavLink></li>
               <li><NavLink to="/friends"><button>Friends</button></NavLink></li>
             </ul>
-            <VKLogin session={props.session} data={props.data} userLoginExit={props.userLoginExit}/>
+            <VKLogin session={session} data={data} userLoginExit={userLoginExit}/>
           </nav>
         </main>
       </header>
     </div>
-  );
+  )
 }
 const clickOutsideConfig = {
   handleClickOutside: () => Header.handleClickOutside
-};
+}
 
 
-export default onClickOutside(Header, clickOutsideConfig);
+export default onClickOutside(Header, clickOutsideConfig)

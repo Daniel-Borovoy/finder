@@ -27,3 +27,5 @@ yarn-error.log*
 # OS metadata
 .DS_Store
 Thumbs.db
+.gitignore
+package-lock.json
