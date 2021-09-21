@@ -1,11 +1,19 @@
 .group_list{
-    position: relative;
+    width: 100vw;
+    height: auto;
+    padding: 55px 0; // отступ сверху от навбара и снизу
+    overflow: hidden;
     display: flex;
-    padding-top: 70px;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    .group_list__body{
+      max-width: 1200px;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
 }
 .cleanButton{
     @media (max-width: 767px) {
@@ -16,8 +24,8 @@
       padding: 10px 15px;
     }
     position: fixed;
-    right: 0px;
-    top: 55px;
+    right: 15px;
+    top: 70px;
     z-index: 3;
     font-family: 'Montserrat', sans-serif;
     color: rgb(128, 128, 128);

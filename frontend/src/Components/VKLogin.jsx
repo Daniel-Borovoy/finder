@@ -7,7 +7,8 @@ import HelpIcon from '../images/help.png'
 import SettingsIcon from '../images/settings.png'
 import ExitIcon from '../images/exit.png'
 import { useDispatch, useSelector } from 'react-redux'
-import { vkData } from '../redux/actions'
+import { userDataVK } from '../redux/actions'
+import { NavLink } from 'react-router-dom'
 // данные юзера
 let profileFirstName
 let profileLastName
@@ -16,30 +17,25 @@ let profileSRC // ссылка на аватар юзера
 function VKLogin ()  {
   const dispath = useDispatch()
   const VK = window.VK
-  const data = useSelector((state) => state.dataVK)
+  const data = useSelector((state) => state.userDataVK)
   const session = data.status
   const [open, setOpen] = useState(false)
-  const [haveData, setHaveData] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [openSubmenu, setOpenSubmenu] = useState(false) // для мобилок
-  const isMobile = useMediaQuery('(max-width: 424px)')
-  const isTablet = useMediaQuery('(min-width: 401px) and (max-width: 640px)')
-  const isDesktop = useMediaQuery('(min-width: 641px) and (max-width: 1024px)')
-  const isLargeDesktop = useMediaQuery('(min-width: 1025px)')
-
-
-  VKLogin.handleClickOutside = () => {
-    if (!open)
-      setOpen(false)
-  }
+  const isMobile = useMediaQuery('(max-width: 767px)')
+  // const isTablet = useMediaQuery('(min-width: 401px) and (max-width: 640px)')
+  // const isDesktop = useMediaQuery('(min-width: 641px) and (max-width: 1024px)')
+  // const isLargeDesktop = useMediaQuery('(min-width: 1025px)')
+  VKLogin.handleClickOutside = () => setOpen(false)
 
   function getTopMenuData (r) {
     // запрос аватарки и имени юзера
     VK.Api.call('users.get', { user_ids: r.session.mid, fields: 'photo_50', v: '5.131' }, (r) => {
-      if (r.response && !haveData) {
+      if (r.response) {
         profileSRC = r.response[0].photo_50
         profileFirstName = r.response[0].first_name
         profileLastName = r.response[0].last_name
-        setHaveData(true)
+        setLoading(false)
       }
     })
   }
@@ -48,12 +44,11 @@ function VKLogin ()  {
         // если пользователь авторизирован - выходим, не авторизирован - заходим
         if (session === "connected") {
           VK.Auth.logout((r) => {
-            console.log(r)
             profileSRC = ''
-            setOpen(false)
-            setHaveData(false)
             localStorage.clear()
-            dispath(vkData(r))
+            setOpen(false)
+            setLoading(false)
+            dispath(userDataVK(r))
           })
         }
         else {
@@ -61,7 +56,7 @@ function VKLogin ()  {
             if (r.session) {
               /* Пользователь успешно авторизовался */
               getTopMenuData(r)
-              dispath(vkData(r))
+              dispath(userDataVK(r))
               if (r.settings) {
                 /* Выбранные настройки доступа пользователя, если они были запрошены */
               }
@@ -74,7 +69,7 @@ function VKLogin ()  {
       }
 
 
-  if (session === "connected" && !haveData) {
+  if (session === "connected" && loading) {
     getTopMenuData(data)
   }
 
@@ -105,18 +100,14 @@ function VKLogin ()  {
           </div>
           <div className={open ? "top_profile_menu open" : "top_profile_menu"}>
             <div className="top_profile_sep"></div>
+            
+            <NavLink to="/profile"><button onClick={() => setOpen(!open)}>Профиль</button></NavLink>
             <button onClick={() => setOpen(!open)}>Настройки</button>
             <button onClick={() => setOpen(!open)}>Помощь</button>
             <div className="top_profile_sep"></div>
             <button onClick={() => setOpen(!open)} onClick={onClickButton}>Выйти</button>
           </div>
         </div>
-    )
-  }
-  // лоадер при загрузке
-  if (session === "check") {
-    return (
-        <div className="lds-ring"><div></div><div></div><div></div><div></div></div> // это лоадер))
     )
   }
 
@@ -132,7 +123,7 @@ function VKLogin ()  {
   if(session === "unknown") {
     return (
         <div className="login_button" id='vk'>
-          <button type="button" style={{backgroundColor: "blue"}} onClick={onClickButton}>Авторизоваться в ВК</button>
+          <button type="button" style={{backgroundColor: "blue"}} onClick={onClickButton}>Для входа нужен аккаунт ВК</button>
         </div>
     )
   }

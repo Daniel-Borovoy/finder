@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { cleaner } from '../redux/actions'
 
 //карточка группы
-function GroupCard ({name, imgURL}) {
+const GroupCard = ({name, imgURL}) => {
   const dispatch = useDispatch()
   const cleanerCheck = useSelector((state) => state.clean)
   const inFavorites = localStorage.getItem(name) ? true : false

@@ -1,19 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-.navbar{
-    z-index: 100;
-    position: fixed;
-    width: 100vw;
-    height: 55px;
-    top: 0;
-    left: 0;
-    right: 0;
-    
+
     .header{
+        z-index: 100;
+        position: fixed;
+        width: 100vw;
+        height: 55px;
+        top: 0;
+        left: 0;
+        right: 0;
         font-family: 'Montserrat', sans-serif;
         background-color: #f6f6f6;
         padding: 0 15px;
-        height: 100%;
-        main{
+        .header_body{
             height: 100%;
             margin: 0 auto;
             max-width: 1200px;
@@ -27,8 +25,8 @@
                 font-size: 1.5rem;
                 color: #000;
                 user-select: none;
-                @media (max-width: 767px) {
-                    font-size: 1.5rem;
+                @media (min-width: 768px) and (max-width: 1023px) {
+                    font-size: 2vw;
                 }
             }
             nav{
@@ -51,8 +49,6 @@
                         cursor: pointer;
                         user-select: none;
                         font-size: 1rem;
-                    }
-                    button{
                         color: rgba(0,0,0,0.6);
                         background-color: #fff;
                         border-radius: 24px;
@@ -68,16 +64,16 @@
             }
         }
     }
-}
-.navbar.mobile {
+
+.header.mobile {
     height: 70px;
 }
 
 
 
 
-
 .mobile__menu{
+    z-index: 300;
     position: fixed;
     left: -100vw;
     top: 0;
@@ -90,7 +86,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    transition: .5s ease-out 0s;
+    transition: .3s ease 0s;
     ul {
         list-style: none;
         overflow-y: auto;

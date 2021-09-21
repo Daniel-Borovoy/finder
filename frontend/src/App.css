@@ -9,8 +9,5 @@ body{
 #root{
     display: flex;
     justify-content: center;
-}
-.wrapper{
-    max-width: 1200px;
-    height: 100%;
+    align-items: center;
 }

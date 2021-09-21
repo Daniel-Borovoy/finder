@@ -1,10 +1,10 @@
 import '../Styles/Block.scss'
 
-function Block() {
+const Block = () => {
   return (
-    <section className="section1">
-      <div className="section__body">
-        <div className="title section1__title">Welcome to Finder</div>
+    <section className="lending">
+      <div className="lending__body">
+        <div className="title lending__title">Welcome to Finder</div>
       </div>
     </section>
   )

@@ -1,9 +1,9 @@
 import { combineReducers } from "redux"
 import { groupsReducer } from "./GroupsReducer"
-import { vkDataReducer } from "./vkDataReducer"
+import { userDataVKReducer } from "./userDataVKReducer"
 const rootReducer = combineReducers({
     clean: groupsReducer,
-    dataVK: vkDataReducer
+    userDataVK: userDataVKReducer
 })
 
 export default rootReducer

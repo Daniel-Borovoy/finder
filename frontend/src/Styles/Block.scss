@@ -1,9 +1,9 @@
-section{
-    max-width: 100vw;
+.lending{
+    width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
-    .section__body{
+    .lending__body{
         overflow: hidden;
         min-height: 100%;
         max-width: 1200px;

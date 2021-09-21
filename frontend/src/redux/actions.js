@@ -3,9 +3,9 @@ export function cleaner() {
         type: "CLEAN_FAVORITES_GROUPS"
     }
 }
-export function vkData(dataVK) {
+export function userDataVK(data) {
     return {
-        type: "DATA_RECEIVED",
-        dataVK
+        type: "OBTAINED_DATA",
+        data
     }
 }
