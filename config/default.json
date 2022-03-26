@@ -1,4 +1,0 @@
-{
-    "port": 5000,
-    "mongoUri": "mongodb+srv://TheGrids:alex32132@cluster0.wwrlc.mongodb.net/RE-FINDER?retryWrites=true&w=majority"
-}

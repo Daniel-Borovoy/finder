@@ -1,0 +1,186 @@
+button[type="button"]{
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    color: rgba(255,255,255,0.65);
+    border-radius: 24px;
+    padding: 10px 40px;
+    transition: .4s ease 0s;
+    &:hover{
+        color:#fff;
+    }
+    &:active{
+        opacity: .4;
+    }
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12px;
+    height: 55px;
+    position: relative;
+    cursor: pointer;
+    transition: .2s ease 0s;
+    width: 150px;
+    user-select: none;
+    @media (max-width: 767px) {
+        width: 100%;
+        height: 20vh;
+        margin-bottom: 20px;
+    }
+    &:hover{
+        background-color: #dedede;
+    }
+    .arrow{
+        transition: .25s ease 0s; 
+     }
+     .arrow.rotate{
+         transform: rotate(0.5turn);
+     }
+     .top_profile_menu{
+         cursor: default;
+         visibility: hidden;
+         opacity: 0;
+         transition: .2s ease 0s;
+         position: absolute;
+         padding: 30px 0;
+         top: 100%;
+         right: 0;
+         display: flex;
+         color: #000;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         background-color: #e7e7e7;
+         button{
+             cursor: pointer;
+             border: none;
+             width: 150px;
+             padding: 10px;
+             background-color: #e7e7e7;
+             font-size: 16px;
+             font-family: 'Montserrat', sans-serif;
+             font-weight: 500;
+             &:hover{
+                 background-color: #d5d5d5;
+             }
+         }
+         .top_profile_sep{
+             width: 80%;
+             margin: 4px 13px;
+             border-top: 1px solid #929292;
+         }
+     }
+     .top_profile_menu.open{
+         visibility: visible;
+         opacity: 1;
+     }
+}
+.profile.open{
+    background-color: #cfcece;
+}
+.profileButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: inherit;
+    img {
+        margin-left: 15px;
+        width: 40px;
+        border-radius: 25px;
+        margin-right: 10px;
+        pointer-events: none;
+    }
+}
+
+.mobile_profile{
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    height: auto;
+    background-color: #f1f1f1;
+    img {
+        width: 50px;
+        height: 50px;
+        margin: 15px;
+        border-radius: 25px;
+        margin-bottom: 10px;
+    }
+    .mobile_profile__name{
+        padding: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+    .mobile_submenu{
+        display: none;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        background-color: #d3d3d3;
+        button {
+            padding: 5px 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            user-select: none;
+            img {
+                width: 30px;
+                height: 30px;
+                border-radius: 0;
+                margin: 0;
+            }
+            h1 {
+                margin-left: 15px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+            }
+            
+            text-align: start;
+            border: none;
+            cursor: pointer;
+            background-color: #d3d3d3;
+            margin-bottom: 15px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+        
+    }
+    .mobile_submenu.open {
+        display: flex;
+    }
+    
+}
+.arrow{
+    transition: .25s ease 0s; 
+ }
+ .arrow.rotate{
+    transform: rotate(0.5turn);
+ }
+
+.login_button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    @media (max-width: 767px) {
+        color: #fff;
+        button {
+            color: #fff;
+            height: auto;
+            padding: 15px;
+            font-size: 15px;
+            
+        }
+    }
+}
