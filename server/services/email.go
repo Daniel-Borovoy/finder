@@ -20,7 +20,7 @@ func SendEmailUUID(email string, UUID string) {
 
 	m.SetHeader("Subject", "Подтверждение электронной почты DDoS Guard Web App")
 
-	m.SetBody("text/plain", "http://"+os.Getenv("EMAIL_HTTP")+"/activation/"+UUID)
+	m.SetBody("text/plain", "http://"+os.Getenv("EMAIL_HTTP")+"/api/v1/activation/"+UUID)
 
 	d := gomail.NewDialer("smtp.gmail.com", 587, os.Getenv("EMAIL_LOGIN"), os.Getenv("EMAIL_PASSWORD"))
 
