@@ -14,7 +14,7 @@ func ConnectionDB() {
 		panic("No .env file")
 	}
 
-	dsn, exits := os.LookupEnv("POSTGRES_CONNECTION")
+	dsn, exits := os.LookupEnv("POSTGRES_CONNECT")
 
 	if !exits {
 		panic("No POSTGRES_CONNECTION env")
@@ -26,7 +26,7 @@ func ConnectionDB() {
 		panic(err)
 	}
 
-	database.AutoMigrate(&User{})
+	database.AutoMigrate(&User{}, &Token{}, EmailCheck{})
 
 	DB = database
 }
